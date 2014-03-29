@@ -1,0 +1,184 @@
+[% META
+  description = 'Обработка поля типа Адрес'
+%]
+[%
+  meta.head.api = 1;
+  meta.head.wysiwyg = 1;
+  meta.head.upload = 1;
+  meta.html_headers.push(
+    "/js/tnd/common.js"
+    "/js/tnd/tender.js"
+    "/js/tnd/address.js"
+    "/css/$TMPL_LAYOUT/tender.css"
+    "/css/$TMPL_LAYOUT/brief.css"
+    "/js/style02/steps.js"
+    "/js/external/core/bootstrap-datepicker.js"
+    "/css/external/datepicker.css"
+    "/js/external/core/bootstrap-datepicker.ru.js"
+    "/js/style02/datepicker_tnd.js"
+    "/js/external/core/bootstrap-datetimepicker.min.js"
+    "/css/external/bootstrap-datetimepicker.min.css"
+    "/css/external/jquery.fileupload-ui.css"
+  );
+
+  controlGroup_begin();
+      option0 = api('system.take_address_type');
+      %]
+        <b>Совпадает с  </b>
+        <select name="vAddressType"   
+                id="[% code %]00" 
+                style="width:192px"
+                onchange="window.PGWS.SetAddress('[%code%]',this,'[%tnd.c_id%]');" 
+                onkeypress="window.PGWS.SetAddress('[%code%]',this,'[%tnd.c_id%]');" 
+                onkeydown="window.PGWS.SetAddress('[%code%]',this,'[%tnd.c_id%]');" 
+                onkeyup="window.PGWS.SetAddress('[%code%]',this,'[%tnd.c_id%]');"    
+                onselect="window.PGWS.SetAddress('[%code%]',this,'[%tnd.c_id%]');" 
+                onclick="window.PGWS.SetAddress('[%code%]',this,'[%tnd.c_id%]');"    
+                onfocus="window.PGWS.SetAddress('[%code%]',this,'[%tnd.c_id%]');" 
+                autocomplete = "off"> 
+      [% 
+        FOR o IN option0; 
+            vId0 = o.id;  
+            vAnno0 = o.name; 
+      %]
+                <option value="[%vId0%]"[% IF vId0 == 9 %]selected[% END %]>[%vAnno0%]</option>
+      [% END %]
+        </select>
+        <b>Индекс  </b>
+        <input name="vZip" 
+               type="text"  
+               id="[% code %]11" 
+               class='input-mini' 
+               onchange="window.PGWS.changeAddress('[%code%]');" 
+               onkeypress="window.PGWS.changeAddress('[%code%]');" 
+               onkeydown="window.PGWS.changeAddress('[%code%]');" 
+               onkeyup="window.PGWS.changeAddress('[%code%]');"    
+               onselect="window.PGWS.changeAddress('[%code%]');" 
+               onclick="window.PGWS.changeAddress('[%code%]');"    
+               onfocus="window.PGWS.changeAddress('[%code%]');" 
+               autocomplete = "off">
+      [%
+  controlGroup_end;
+
+  controlGroup_begin();
+      option1 = api('info.location.places.common');
+      %]
+        <strong> Страна   </strong>
+        <select name="vCountry"   
+                id="[% code %]22" 
+                style="width:147px"
+                onchange="window.PGWS.SetRegions('[%code%]',this,0,0);" 
+                onkeypress="window.PGWS.SetRegions('[%code%]',this,0,0);" 
+                onkeydown="window.PGWS.SetRegions('[%code%]',this,0,0);" 
+                onkeyup="window.PGWS.SetRegions('[%code%]',this,0,0);"    
+                onselect="window.PGWS.SetRegions('[%code%]',this,0,0);" 
+                onclick="window.PGWS.SetRegions('[%code%]',this,0,0);"    
+                onfocus="window.PGWS.SetRegions('[%code%]',this,0,0);" 
+                autocomplete = "off">
+      [% 
+        FOR o IN option1; 
+            vId1 = o.id;  
+            vAnno1 = o.name; 
+      %]
+                <option value="[%vId1%]"[% IF vId1 == "C1" %]selected[% END %]>[%vAnno1%]</option>
+      [% END %]
+        </select>
+      [%
+    
+      option2 = api('info.location.places.common',place_code => "C1");
+      %]
+        <strong>Область  </strong>
+        <select name="vRegion"   
+                id="[% code %]33" 
+                class='input-medium' 
+                onchange="window.PGWS.SetCities('[%code%]',this,0);" 
+                onkeypress="window.PGWS.SetCities('[%code%]',this,0);" 
+                onkeydown="window.PGWS.SetCities('[%code%]',this,0);" 
+                onkeyup="window.PGWS.SetCities('[%code%]',this,0);"    
+                onselect="window.PGWS.SetCities('[%code%]',this,0);" 
+                onclick="window.PGWS.SetCities('[%code%]',this,0);"    
+                onfocus="window.PGWS.SetCities('[%code%]',this,0);" 
+                autocomplete = "off">
+      [% 
+        FOR o IN option2; 
+            vId2 = o.id; 
+            vAnno2 = o.name; 
+      %]
+                <option value="[%vId2%]">[%vAnno2%]</option>
+      [% END %]
+         </select>
+      [%
+  controlGroup_end;
+
+  controlGroup_begin();
+      option3 = api('info.location.places.common', place_code => "A1001");
+      %]
+        <strong> Город  </strong>
+        <input type="radio" 
+               name="[% code %]v_City"   
+               id="[% code %]44" 
+               value="yes" 
+               checked>
+        <select name="vCity"   
+                id="[% code %]55" 
+                style="width:167px"
+                onchange="window.PGWS.changeAddress('[%code%]');" 
+                onkeypress="window.PGWS.changeAddress('[%code%]');" 
+                onkeydown="window.PGWS.changeAddress('[%code%]');" 
+                onkeyup="window.PGWS.changeAddress('[%code%]');"    
+                onselect="window.PGWS.changeAddress('[%code%]');" 
+                onclick="window.PGWS.changeAddress('[%code%]');"    
+                onfocus="window.PGWS.changeAddress('[%code%]');" autocomplete = "off">
+      [% 
+        FOR o IN option3; 
+           vId3 = o.id; 
+           vAnno3 = o.name; 
+      %]
+                <option value="[%vId3%]">[%vAnno3%]</option>
+      [% END %]
+         </select>
+        <input type="radio" 
+               name="[% code %]v_City"   
+               id="[% code %]66" 
+               value="no">  
+        <input name="vCity2" 
+               type="text"    
+               id="[% code %]77" 
+               style="width:148px"
+               onchange="window.PGWS.changeAddress('[%code%]');" 
+               onkeypress="window.PGWS.changeAddress('[%code%]');" 
+               onkeydown="window.PGWS.changeAddress('[%code%]');" 
+               onkeyup="window.PGWS.changeAddress('[%code%]');"    
+               onselect="window.PGWS.changeAddress('[%code%]');" 
+               onclick="window.PGWS.changeAddress('[%code%]');"    
+               onfocus="window.PGWS.changeAddress('[%code%]');" 
+               autocomplete = "off">
+      [%
+  controlGroup_end;
+
+  controlGroup_begin();
+      %]
+        <strong>Улица, дом </strong>
+        <input name="vStreet" 
+               type="text"   
+               id="[% code %]88" 
+               style="width:321px"
+               onchange="window.PGWS.changeAddress('[%code%]');" 
+               onkeypress="window.PGWS.changeAddress('[%code%]');" 
+               onkeydown="window.PGWS.changeAddress('[%code%]');" 
+               onkeyup="window.PGWS.changeAddress('[%code%]');"    
+               onselect="window.PGWS.changeAddress('[%code%]');" 
+               onclick="window.PGWS.changeAddress('[%code%]');"    
+               onfocus="window.PGWS.changeAddress('[%code%]');" 
+               autocomplete = "off">
+      [%
+  controlGroup_end;
+
+      %]
+        <input name="spec.[% code %].[% tag %]" 
+               type="text"   
+               id="[% code %]222"  
+               style="width:407px"
+               autocomplete = "off">
+      [%
+%]
