@@ -1,5 +1,5 @@
 [% META
-  description = 'Обработка поля типа Адрес'
+  description = 'РћР±СЂР°Р±РѕС‚РєР° РїРѕР»СЏ С‚РёРїР° РђРґСЂРµСЃ'
 %]
 [%
   meta.head.api = 1;
@@ -24,7 +24,7 @@
   controlGroup_begin();
       option0 = api('system.take_address_type');
       %]
-        <b>Совпадает с  </b>
+        <b>РЎРѕРІРїР°РґР°РµС‚ СЃ  </b>
         <select name="vAddressType"   
                 id="[% code %]00" 
                 style="width:192px"
@@ -44,7 +44,7 @@
                 <option value="[%vId0%]"[% IF vId0 == 9 %]selected[% END %]>[%vAnno0%]</option>
       [% END %]
         </select>
-        <b>Индекс  </b>
+        <b>РРЅРґРµРєСЃ  </b>
         <input name="vZip" 
                type="text"  
                id="[% code %]11" 
@@ -63,7 +63,7 @@
   controlGroup_begin();
       option1 = api('info.location.places.common');
       %]
-        <strong> Страна   </strong>
+        <strong> РЎС‚СЂР°РЅР°   </strong>
         <select name="vCountry"   
                 id="[% code %]22" 
                 style="width:147px"
@@ -87,7 +87,7 @@
     
       option2 = api('info.location.places.common',place_code => "C1");
       %]
-        <strong>Область  </strong>
+        <strong>РћР±Р»Р°СЃС‚СЊ  </strong>
         <select name="vRegion"   
                 id="[% code %]33" 
                 class='input-medium' 
@@ -113,7 +113,7 @@
   controlGroup_begin();
       option3 = api('info.location.places.common', place_code => "A1001");
       %]
-        <strong> Город  </strong>
+        <strong> Р“РѕСЂРѕРґ  </strong>
         <input type="radio" 
                name="[% code %]v_City"   
                id="[% code %]44" 
@@ -158,7 +158,7 @@
 
   controlGroup_begin();
       %]
-        <strong>Улица, дом </strong>
+        <strong>РЈР»РёС†Р°, РґРѕРј </strong>
         <input name="vStreet" 
                type="text"   
                id="[% code %]88" 
