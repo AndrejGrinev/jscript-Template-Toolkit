@@ -1,8 +1,7 @@
-
 if (window.PGWS === undefined) { window.PGWS = {}; }
 
 /* ------------------------------------------------------------------------- */
-//Функция, создающая строку адреса
+//Р¤СѓРЅРєС†РёСЏ, СЃРѕР·РґР°СЋС‰Р°СЏ СЃС‚СЂРѕРєСѓ Р°РґСЂРµСЃР°
 window.PGWS.changeAddress = function(cd){
   var tt='';
   if(document.getElementById(cd+'44').checked){
@@ -17,7 +16,7 @@ window.PGWS.changeAddress = function(cd){
 };
 
 /* ------------------------------------------------------------------------- */
-//Функция, заполняющая поля адреса значениями в зависимости от типа
+//Р¤СѓРЅРєС†РёСЏ, Р·Р°РїРѕР»РЅСЏСЋС‰Р°СЏ РїРѕР»СЏ Р°РґСЂРµСЃР° Р·РЅР°С‡РµРЅРёСЏРјРё РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ С‚РёРїР°
 window.PGWS.SetAddress = function(cd, _this,team_id){
 var _select1 = document.getElementById(cd+'22');
 var _select2 = document.getElementById(cd+'33');
@@ -37,7 +36,7 @@ window.PGWS.SetRegions(cd,_select1,'A'+adrs[0].area_id,'P'+adrs[0].city_id);
 };
 
 /* ------------------------------------------------------------------------- */
-//Функция, создающая список регионов
+//Р¤СѓРЅРєС†РёСЏ, СЃРѕР·РґР°СЋС‰Р°СЏ СЃРїРёСЃРѕРє СЂРµРіРёРѕРЅРѕРІ
 window.PGWS.SetRegions = function(cd,_this,_id,_id2){
 var _select = document.getElementById(cd+'33');
 var params = {
@@ -64,7 +63,7 @@ window.PGWS.changeAddress(cd);
 };
 
 /* ------------------------------------------------------------------------- */
-//Функция, создающая список городов
+//Р¤СѓРЅРєС†РёСЏ, СЃРѕР·РґР°СЋС‰Р°СЏ СЃРїРёСЃРѕРє РіРѕСЂРѕРґРѕРІ
 window.PGWS.SetCities = function(cd,_this,_id){
 var _select = document.getElementById(cd+'55');
 var params = {
